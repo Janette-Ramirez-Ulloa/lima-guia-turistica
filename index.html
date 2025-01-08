@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turismo en Lima</title>
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Franja superior */
+        .top-bar {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #0056b3;
+        }
+
+        .top-bar nav {
+            display: flex;
+            gap: 40px;
+            margin-left: 40px;
+        }
+
+        .top-bar nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .top-bar nav a:hover {
+            color: #0056b3;
+        }
+
+        /* Header */
+        header {
+            height: 100vh;
+            background-image: url('https://www.quechuaperutours.com/wp-content/uploads/2017/07/Banner-1.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+            margin-top: 60px; /* Ajuste por la barra superior */
+            overflow: hidden;
+        }
+
+        header h1 {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Efecto zoom */
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: inherit;
+            background-size: inherit;
+            background-position: inherit;
+            animation: zoomEffect 10s infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes zoomEffect {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        header h1 {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Principales atractivos */
+        .attractives {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .attractive {
+            margin-bottom: 40px;
+        }
+
+        .attractive img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .attractive img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .attractive h2 {
+            margin: 20px 0 10px;
+            color: #0056b3;
+        }
+
+        /* Guía gastronómica */
+        .gastronomy {
+            margin-top: 40px;
+        }
+
+        .gastronomy img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gastronomy img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .gastronomy h2 {
+            color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0056b3;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        footer a {
+            color: #eeebde;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                font-size: 1.5rem;
+            }
+
+            .attractive img {
+                width: 90%;
+            }
+
+            .gastronomy img {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>Descubre Lima</h1>
+        <nav>
+            <a href="#centro-historico">Centro Histórico</a>
+            <a href="#miraflores">Miraflores</a>
+            <a href="#barranco">Barranco</a>
+            <a href="#gastronomia">Guía Gastronómica</a>
+        </nav>
+    </div>
+
+    <header>
+        <h1>Descubre Lima, la Ciudad de los Reyes</h1>
+    </header>
+
+    <section class="attractives" id="centro-historico">
+        <div class="attractive">
+            <h2>Centro Histórico</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Plaza_de_Armas%2C_Lima.jpg" alt="Centro Histórico de Lima">
+            <p>El corazón colonial de Lima, lleno de historia, arquitectura impresionante y cultura vibrante.</p>
+        </div>
+        <div class="attractive" id="miraflores">
+            <h2>Miraflores</h2>
+            <img src="https://www.peru.travel/Contenido/Atractivo/Imagen/es/43/1.1/Principal/miraflores-costa-verde.jpg" alt="Miraflores">
+            <p>Conocido por sus hermosos malecones, vistas al océano y deliciosa gastronomía.</p>
+        </div>
+        <div class="attractive" id="barranco">
+            <h2>Barranco</h2>
+            <img src="https://www.peru.travel/Contenido/Noticia/Imagen/es/1420/1.0/Principal/barranco-timeout.jpg" alt="Barranco">
+            <p>El distrito bohemio de Lima, ideal para disfrutar de arte, música y un ambiente relajado.</p>
+        </div>
+
+        <div class="gastronomy" id="gastronomia">
+            <h2>Guía Gastronómica</h2>
+            <img src="https://kyodaimagazine.jp/wp-content/uploads/2023/06/gastronomia.jpg" alt="Gastronomía Limeña">
+            <p>Descubre los sabores únicos de Lima, reconocida como la capital gastronómica del mundo.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Turismo Lima. Diseñado por Janette Ramirez</p>
+        <p><a href="#">Contáctanos</a> | <a href="#">Política de privacidad</a></p>
+    </footer>
+</body>
+</html>
