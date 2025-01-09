@@ -5,6 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turismo en Lima</title>
     <style>
+         /* Carrusel */
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            z-index: 100;
+        }
+
+        .carousel-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Indicadores */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .indicator.active {
+            background-color: white;
+        }
+        .banner {
+        margin: 20px;
+        height: 80px;
+        background-color: rgb(16, 137, 242);
+        color: #fff;
+        padding: 12px;
+        text-align: center;
+        font-size: 24px;
+        border-radius: 12px;
+      }
         /* Estilos generales */
         body {
             margin: 0;
@@ -163,6 +238,21 @@
             text-decoration: none;
         }
 
+        /* Calificación */
+        .rating {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .rating label {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .rating input {
+            margin: 0 5px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             header {
@@ -190,10 +280,65 @@
         </nav>
     </div>
 
+    <div style="margin-top: 80px; text-align: center;">
+        <label for="language">Seleccione su idioma:</label>
+        <select id="language" name="language">
+            <option value="es">Español</option>
+            <option value="en">Inglés</option>
+            <option value="fr">Francés</option>
+        </select>
+    </div>
+
     <header>
         <h1>Descubre Lima, la Ciudad de los Reyes</h1>
     </header>
+    <!-- Carrusel -->
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="https://images.rappi.pe/restaurants_background/pepanchitasazoncriolla-1666792642613.jpg" alt="Imagen 1">
+            <img src="https://blog.viajesmachupicchu.travel/wp-content/uploads/2021/12/que-hacer-en-barranco-lima-1170x550.jpg" alt="Imagen 2">
+            <img src="https://perubicentenario.com/wp-content/uploads/2016/10/Variedad-de-tragos-1024x680.jpg" alt="Imagen 3">
+            <img src="https://cdn.fastpixel.io/fp/ret_img+v_7e4d+w_700+h_465+q_lossy+to_webp/comidasperuanas.com.pe/wp-content/uploads/2023/05/postres_peruanos.jpg" alt="Imagen 4">
+            <img src="https://msi.gob.pe/portal/wp-content/uploads/2016/08/El-Olivar-de-San-Isidro.jpg" alt="Imagen 5">
+            <img src="https://peruretail.sfo3.cdn.digitaloceanspaces.com/wp-content/uploads/Larcomar-6.jpg" alt="Imagen 6">
+            <img src="https://blog.redbus.pe/wp-content/uploads/2024/07/plaza.jpg" alt="Imagen 7">
+            <img src="https://www.incatrilogytours.com/wp-content/uploads/2021/11/tour_barrando_lima-1.png" alt="Imagen 8">
+        </div>
 
+        <div class="carousel-buttons">
+            <button class="carousel-button" id="prev">&#10094;</button>
+            <button class="carousel-button" id="next">&#10095;</button>
+        </div>
+
+        <div class="carousel-indicators">
+            <div class="indicator active" data-slide="0"></div>
+            <div class="indicator" data-slide="1"></div>
+            <div class="indicator" data-slide="2"></div>
+            <div class="indicator" data-slide="3"></div>
+            <div class="indicator" data-slide="4"></div>
+            <div class="indicator" data-slide="5"></div>
+            <div class="indicator" data-slide="6"></div>
+            <div class="indicator" data-slide="7"></div>
+        </div>
+    </div>
+    <div class="top-bar">
+        <h1>Descubre Lima</h1>
+        <nav>
+            <a href="#centro-historico">Centro Histórico</a>
+            <a href="#miraflores">Miraflores</a>
+            <a href="#barranco">Barranco</a>
+            <a href="#gastronomia">Guía Gastronómica</a>
+        </nav>
+    </div>
+    <script>
+        const edad = prompt("Ingrese su edad");
+        const edadNumber = parseInt(edad);
+
+        if (edadNumber < 18) {
+            document.write(
+                "<div class='banner'>Recuerda visitar los lugares con un adulto</div>");
+        }
+    </script>
     <section class="attractives" id="centro-historico">
         <div class="attractive">
             <h2>Centro Histórico</h2>
@@ -219,10 +364,53 @@
             </div>
         </div>
     </section>
+    <!-- Calificación de la página -->
+    <div class="rating">
+        <label for="rating">Califica nuestra página:</label>
+        <input type="number" id="rating" name="rating" min="1" max="5" placeholder="1-5">
+    </div>
 
     <footer>
         <p>&copy; 2025 Turismo Lima. Diseñado por Janette Ramirez</p>
         <p><a href="#">Contáctanos</a> | <a href="#">Política de privacidad</a></p>
     </footer>
+    <script>
+        const carouselImages = document.querySelector('.carousel-images');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = indicators.length;
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        let currentSlide = 0;
+
+        function updateCarousel() {
+            carouselImages.style.transform = `translateX(-${currentSlide * 100}%)`;
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        });
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarousel();
+            });
+        });
+
+        // Auto-play
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }, 5000);
+    </script>
 </body>
 </html>
