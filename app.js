@@ -4,19 +4,31 @@ const edadNumber = parseInt(edad);
         "Ingrese un color este será el color de fondo de la página");
 
 function RegistrarHermanos (){
-    document.body.style.backgroundColor = backgroundColor;
     const CantidadDeHermanos = parseInt(prompt ("Ingresa la cantidad de hermanos") 
     );
     
     const NombresDeHermanos = []; 
     
-    let contador = 0
+    let contador = 0;
     while (contador < CantidadDeHermanos) {
         const hermano = prompt ("Ingresa el nombre del hermano " + contador);
         NombresDeHermanos.push (hermano);
         contador++;
     }
-        console.log (NombresDeHermanos);
+
+    // Limpia el contenedor antes de agregar la nueva lista
+    resultContainer.innerHTML = "";
+
+    // Crea y puebla la lista no ordenada con los nombres
+    const listaNoOrdenada = document.createElement("ul");
+    for (let nombreDeHermano of NombresDeHermanos) {
+    const listItem = document.createElement("li");
+    listItem.textContent = nombreDeHermano;
+    listaNoOrdenada.appendChild(listItem);
+    }
+
+  // Agrega la lista al contenedor
+  resultContainer.appendChild(listaNoOrdenada);
 }
 
 function generarColorHex() {
@@ -166,4 +178,7 @@ const carouselImages = document.querySelector('.carousel-images');
             currentSlide = (currentSlide + 1) % totalSlides;
             updateCarousel();
         }, 5000);
+
+    // Obtiene referencia al contenedor del área de juego
+    const resultContainer = document.getElementById("game-area");
 
