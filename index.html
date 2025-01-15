@@ -267,6 +267,14 @@
                 width: 90%;
             }
         }
+        .btn-link {
+        background-color: blue;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+
+        }
     </style>
 </head>
 <body>
@@ -329,16 +337,8 @@
             <a href="#barranco">Barranco</a>
             <a href="#gastronomia">Guía Gastronómica</a>
         </nav>
+        <a href="./interactivo.html" class="btn-link">Quiero interactuar</a>
     </div>
-    <script>
-        const edad = prompt("Ingrese su edad");
-        const edadNumber = parseInt(edad);
-
-        if (edadNumber < 18) {
-            document.write(
-                "<div class='banner'>Recuerda visitar los lugares con un adulto</div>");
-        }
-    </script>
     <section class="attractives" id="centro-historico">
         <div class="attractive">
             <h2>Centro Histórico</h2>
@@ -369,48 +369,9 @@
         <label for="rating">Califica nuestra página:</label>
         <input type="number" id="rating" name="rating" min="1" max="5" placeholder="1-5">
     </div>
-
     <footer>
         <p>&copy; 2025 Turismo Lima. Diseñado por Janette Ramirez</p>
         <p><a href="#">Contáctanos</a> | <a href="#">Política de privacidad</a></p>
     </footer>
-    <script>
-        const carouselImages = document.querySelector('.carousel-images');
-        const indicators = document.querySelectorAll('.indicator');
-        const totalSlides = indicators.length;
-        const prevButton = document.getElementById('prev');
-        const nextButton = document.getElementById('next');
-        let currentSlide = 0;
-
-        function updateCarousel() {
-            carouselImages.style.transform = `translateX(-${currentSlide * 100}%)`;
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentSlide);
-            });
-        }
-
-        prevButton.addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        });
-
-        nextButton.addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        });
-
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                currentSlide = index;
-                updateCarousel();
-            });
-        });
-
-        // Auto-play
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        }, 5000);
-    </script>
 </body>
 </html>
