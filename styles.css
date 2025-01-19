@@ -1,0 +1,66 @@
+/* reset: Remover estilos por defecto */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Verdana, sans-serif;
+  /* background-color: #0f172a; */
+  background: url(https://png.pngtree.com/thumb_back/fw800/background/20231005/pngtree-vintage-arcade-game-machines-in-an-arcade-room-a-gaming-concept-image_13544355.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  max-width: 1200px;
+  margin: auto;
+  min-height: 100vh;
+}
+
+main {
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  justify-content: center;
+  /* align-items: center; */
+  gap: 20px;
+}
+
+button {
+  padding: 20px 20px;
+  width: 70%;
+  margin: auto;
+  font-size: 20px;
+  color: #fff;
+  font-family: Verdana, sans-serif;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 12px;
+  transition: transform 300ms ease-in;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+section {
+  margin: 20px;
+}
+
+#game-area {
+  min-height: 300px;
+  border: dashed 3px #fff;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
