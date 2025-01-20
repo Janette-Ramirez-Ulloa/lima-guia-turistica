@@ -1,184 +1,103 @@
-const edad = prompt("Ingrese su edad");
-const edadNumber = parseInt(edad);
-    const backgroundColor = prompt (
-        "Ingrese un color este será el color de fondo de la página");
+// Cambiar fondo en tiempo real
+const userColor = prompt("Escoge el color de fondo que prefieras para la página");
+document.body.style.backgroundColor = userColor || "tblue";
 
-function RegistrarHermanos (){
-    const CantidadDeHermanos = parseInt(prompt ("Ingresa la cantidad de hermanos") 
-    );
-    
-    const NombresDeHermanos = []; 
-    
-    let contador = 0;
-    while (contador < CantidadDeHermanos) {
-        const hermano = prompt ("Ingresa el nombre del hermano " + contador);
-        NombresDeHermanos.push (hermano);
-        contador++;
+// Mostrar resultados en el área de juego
+const gameArea = document.getElementById("game-area");
+
+// Función Hermanos
+function hermanos() {
+    gameArea.innerHTML = "";
+    const cantidad = parseInt(prompt("¿Cuántos hermanos tienes?"));
+    if (isNaN(cantidad) || cantidad <= 0) {
+        gameArea.innerHTML = "<p>Ingresa un número válido mayor que 0.</p>";
+        return;
     }
 
-    // Limpia el contenedor antes de agregar la nueva lista
-    resultContainer.innerHTML = "";
+    const ul = document.createElement("ul");
+    for (let i = 0; i < cantidad; i++) {
+        const nombre = prompt(`Ingresa el nombre de tu hermano #${i + 1}:`);
+        const li = document.createElement("li");
+        li.textContent = nombre || "Nombre no proporcionado";
+        ul.appendChild(li);
+    }
+    gameArea.appendChild(ul);
+}
 
-    // Crea y puebla la lista no ordenada con los nombres
-    const listaNoOrdenada = document.createElement("ul");
-    for (let nombreDeHermano of NombresDeHermanos) {
-    const listItem = document.createElement("li");
-    listItem.textContent = nombreDeHermano;
-    listaNoOrdenada.appendChild(listItem);
+// Función Bloques
+function bloques() {
+    gameArea.innerHTML = "";
+    const cantidad = parseInt(prompt("Ingresa la cantidad de bloques"));
+    if (isNaN(cantidad) || cantidad <= 0) {
+        gameArea.innerHTML = "<p>Ingresa un número válido mayor que 0.</p>";
+        return;
     }
 
-  // Agrega la lista al contenedor
-  resultContainer.appendChild(listaNoOrdenada);
-}
-
-function generarColorHex() {
-    // Convierte un número decimal (0-16777215) a hexadecimal (000000-FFFFFF)
-    const numeroAleatorio = Math.floor(Math.random() * 16777216);
-    // Asegura que el color tenga 6 dígitos agregando ceros a la izquierda si es necesario
-    const colorHex = `#${numeroAleatorio.toString(16).padStart(6, "0")}`;
-    return colorHex;
-  }
-  
-  // Obtiene referencia al botón del juego 2
-  const btnGame2 = document.getElementById("btnGame2");
-  
-  // Agrega el event listener para generar bloques cuando se haga click
-  btnGame2.addEventListener("click", generarBloques);
-  
-  /**
-   * Función principal para generar bloques de colores
-   * Modifica el título y crea cuadrados con colores aleatorios
-   */
-  function generarBloques() {
-    // Modifica el título de la página
-    const title = document.getElementById("title");
-    title.textContent = "Hola fui modificado desde JS";
-    title.style.fontFamily = "Verdana";
-    title.style.color = "green";
-  
-    // Solicita al usuario la cantidad de cuadrados a generar
-    const cantidadDeCuadrados = parseInt(
-      prompt("Ingrese la cantidad de bloques")
-    );
-  
-    // Inicializa contador para el bucle de generación
-    let contador = 0;
-  
-    // Obtiene referencia al body para agregar los cuadrados
-    const body = document.body;
-  
-    // Genera los cuadrados según la cantidad especificada
-    while (contador < cantidadDeCuadrados) {
-      // Crea un nuevo elemento div para el cuadrado
-      const cuadrado = document.createElement("div");
-      cuadrado.textContent = contador;
-  
-      // Establece las propiedades de estilo del cuadrado
-      cuadrado.style.width = "100px";
-      cuadrado.style.height = "100px";
-      cuadrado.style.backgroundColor = generarColorHex();
-      cuadrado.style.border = "1px solid";
-  
-      // Agrega el cuadrado al body
-      body.appendChild(cuadrado);
-      contador++;
+    for (let i = 0; i < cantidad; i++) {
+        const bloque = document.createElement("div");
+        bloque.style.width = "100px";
+        bloque.style.height = "100px";
+        bloque.style.backgroundColor = generarColorHex();
+        bloque.style.margin = "10px";
+        bloque.style.display = "inline-block";
+        gameArea.appendChild(bloque);
     }
-  }
-
-// Función para generar un número aleatorio
-function obtenerNumeroAleatorio(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Función para generar la elección aleatoria de la computadora
-function eleccionComputadora() {
-    const opciones = ["piedra", "papel", "tijera"];
-    const indiceAleatorio = obtenerNumeroAleatorio(0, 2);
-    return opciones[indiceAleatorio];
+// Limpiar bloques
+function limpiarGameArea() {
+    gameArea.innerHTML = "";
 }
 
-// Función para determinar el resultado del juego
-function determinarResultado(usuario, computadora) {
+// Función Yanquenpo
+function yanquenpo() {
+    gameArea.innerHTML = "";
+    const usuario = prompt("Elige una opción: piedra, papel o tijera").toLowerCase();
+    const computadora = generarOpcionAleatoria();
+
+    if (!["piedra", "papel", "tijera"].includes(usuario)) {
+        gameArea.innerHTML = "<p>Por favor, elige una opción válida (piedra, papel o tijera).</p>";
+        return;
+    }
+
+    const resultado = document.createElement("p");
     if (usuario === computadora) {
-        return "¡Es un empate!";
-    }
-    if (
+        resultado.textContent = `Es un empate: ambos eligieron ${usuario}.`;
+        resultado.style.color = "gray";
+    } else if (
         (usuario === "piedra" && computadora === "tijera") ||
         (usuario === "tijera" && computadora === "papel") ||
         (usuario === "papel" && computadora === "piedra")
     ) {
-        return "¡Ganaste!";
+        resultado.textContent = `¡Ganaste! Tú elegiste ${usuario} y la computadora eligió ${computadora}.`;
+        resultado.style.color = "green";
     } else {
-        return "Perdiste, la computadora ganó.";
+        resultado.textContent = `¡Perdiste! Tú elegiste ${usuario} y la computadora eligió ${computadora}.`;
+        resultado.style.color = "red";
     }
+    gameArea.appendChild(resultado);
 }
 
-// Lógica principal del juego
-function jugarPiedraPapelTijera() {
-    const eleccionUsuario = prompt("Elige: piedra, papel o tijera").toLowerCase();
+// Eventos
+document.querySelectorAll("li").forEach((item, index) => {
+    item.addEventListener("click", () => {
+        if (index === 0) hermanos();
+        else if (index === 1) bloques();
+        else if (index === 2) yanquenpo();
+    });
+});
 
-    // Validar entrada del usuario
-    if (!["piedra", "papel", "tijera"].includes(eleccionUsuario)) {
-        alert("Elección no válida. Por favor, elige entre piedra, papel o tijera.");
-        return;
-    }
+document.getElementById("btn-inicio").addEventListener("click", () => {
+    location.href = "./index.html";
+});
 
-    const eleccionCompu = eleccionComputadora();
-
-    // Mostrar las elecciones
-    alert(`Elegiste: ${eleccionUsuario}`);
-    alert(`La computadora eligió: ${eleccionCompu}`);
-
-    // Determinar y mostrar el resultado
-    const resultado = determinarResultado(eleccionUsuario, eleccionCompu);
-    alert(resultado);
+// Generar colores aleatorios
+function generarColorHex() {
+    return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0")}`;
 }
 
-// Ejecutar el juego
-jugarPiedraPapelTijera();
-
-
-if (edadNumber < 18) {
-    document.write(
-        "<div class='banner'>Recuerda visitar los lugares con un adulto</div>");
+// Generar opción aleatoria
+function generarOpcionAleatoria() {
+    const opciones = ["piedra", "papel", "tijera"];
+    return opciones[Math.floor(Math.random() * opciones.length)];
 }
-const carouselImages = document.querySelector('.carousel-images');
-        const indicators = document.querySelectorAll('.indicator');
-        const totalSlides = indicators.length;
-        const prevButton = document.getElementById('prev');
-        const nextButton = document.getElementById('next');
-        let currentSlide = 0;
-
-        function updateCarousel() {
-            carouselImages.style.transform = `translateX(-${currentSlide * 100}%)`;
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentSlide);
-            });
-        }
-
-        prevButton.addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        });
-
-        nextButton.addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        });
-
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                currentSlide = index;
-                updateCarousel();
-            });
-        });
-
-        // Auto-play
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        }, 5000);
-
-    // Obtiene referencia al contenedor del área de juego
-    const resultContainer = document.getElementById("game-area");
-
