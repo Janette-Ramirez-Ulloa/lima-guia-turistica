@@ -26,6 +26,10 @@ h1 {
   text-align: center;
 }
 
+ul {
+    list-style: none;
+}
+
 li {
     background: rgba(255, 255, 255, 0.1);
     padding: 15px 20px;
@@ -94,6 +98,7 @@ section {
     background-color: #3e8e41;
     transform: scale(0.95);
 }
+
 #game-area {
   min-height: 300px;
   border: dashed 3px #fff;
