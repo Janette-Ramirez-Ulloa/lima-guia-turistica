@@ -74,6 +74,26 @@ section {
   margin: 20px;
 }
 
+#btn-inicio {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#btn-inicio:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+#btn-inicio:active {
+    background-color: #3e8e41;
+    transform: scale(0.95);
+}
 #game-area {
   min-height: 300px;
   border: dashed 3px #fff;
