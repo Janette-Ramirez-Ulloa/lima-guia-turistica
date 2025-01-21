@@ -1,5 +1,5 @@
 // Cambiar fondo en tiempo real
-const userColor = prompt("¡Bienvenido! ¿Cuál es tu color favorito para el fondo de la página?");
+const userColor = prompt("Escoge el color que prefieras para el fondo de la página?");
 document.body.style.backgroundColor = userColor || "lightblue";
 
 // Mostrar resultados en el área de juego
