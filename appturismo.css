@@ -62,7 +62,7 @@ footer {
 }
 
 #btn-inicio {
-    background-color: #4CAF50;
+    background-color: #FFC000;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -73,12 +73,12 @@ footer {
 }
 
 #btn-inicio:hover {
-    background-color: #45a049;
+    background-color: #FFC000;
     transform: scale(1.05);
 }
 
 #btn-inicio:active {
-    background-color: #3e8e41;
+    background-color: #FFC000;
     transform: scale(0.95);
 }
 
