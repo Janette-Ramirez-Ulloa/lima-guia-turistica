@@ -1,6 +1,6 @@
 // Cambiar fondo en tiempo real
-const userColor = prompt("Escoge el color de fondo que prefieras para la página");
-document.body.style.backgroundColor = userColor || "tblue";
+const userColor = prompt("¡Bienvenido! ¿Cuál es tu color favorito para el fondo de la página?");
+document.body.style.backgroundColor = userColor || "lightblue";
 
 // Mostrar resultados en el área de juego
 const gameArea = document.getElementById("game-area");
@@ -10,7 +10,7 @@ function hermanos() {
     gameArea.innerHTML = "";
     const cantidad = parseInt(prompt("¿Cuántos hermanos tienes?"));
     if (isNaN(cantidad) || cantidad <= 0) {
-        gameArea.innerHTML = "<p>Ingresa un número válido mayor que 0.</p>";
+        gameArea.innerHTML = "<p>Por favor, ingresa un número válido mayor que 0.</p>";
         return;
     }
 
@@ -27,9 +27,9 @@ function hermanos() {
 // Función Bloques
 function bloques() {
     gameArea.innerHTML = "";
-    const cantidad = parseInt(prompt("Ingresa la cantidad de bloques"));
+    const cantidad = parseInt(prompt("¿Cuántos bloques deseas generar?"));
     if (isNaN(cantidad) || cantidad <= 0) {
-        gameArea.innerHTML = "<p>Ingresa un número válido mayor que 0.</p>";
+        gameArea.innerHTML = "<p>Por favor, ingresa un número válido mayor que 0.</p>";
         return;
     }
 
@@ -62,7 +62,7 @@ function yanquenpo() {
 
     const resultado = document.createElement("p");
     if (usuario === computadora) {
-        resultado.textContent = `Es un empate: ambos eligieron ${usuario}.`;
+        resultado.textContent = `Empate: ambos eligieron ${usuario}.`;
         resultado.style.color = "gray";
     } else if (
         (usuario === "piedra" && computadora === "tijera") ||
